@@ -108,18 +108,31 @@ const io = new IntersectionObserver(
 );
 revealTargets.forEach((el) => io.observe(el));
 
-/* ===== Contact form (demo) ===== */
+/* ===== Contact form -> WhatsApp ===== */
+const WHATSAPP_NUMBER = "213561988434"; // The Twelve — format international sans "+"
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!form.name.value.trim() || !form.phone.value.trim()) {
     form.reportValidity();
     return;
   }
+
+  const text =
+    `Bonjour The Twelve ! 👋\n\n` +
+    `*Nom :* ${form.name.value.trim()}\n` +
+    `*Téléphone :* ${form.phone.value.trim()}\n` +
+    `*Motif :* ${form.reason.value}\n` +
+    (form.message.value.trim() ? `*Message :* ${form.message.value.trim()}\n` : "");
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank", "noopener");
+
   note.hidden = false;
   form.reset();
-  setTimeout(() => (note.hidden = true), 5000);
+  setTimeout(() => (note.hidden = true), 6000);
 });
 
 /* ===== Footer year ===== */
