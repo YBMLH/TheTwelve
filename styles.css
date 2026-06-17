@@ -170,8 +170,11 @@ ul { list-style: none; }
   font-size: 1.8rem; width: 54px; height: 54px; border-radius: 14px;
   background: var(--cream-2); display: grid; place-items: center; flex-shrink: 0;
 }
+.dish__body { flex: 1; }
 .dish__name { font-size: 1.1rem; color: var(--coffee); font-weight: 600; }
+.dish__pricing { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
 .dish__price { color: var(--orange); font-weight: 700; white-space: nowrap; }
+.dish__pnote { font-size: .68rem; color: var(--muted); white-space: nowrap; text-transform: uppercase; letter-spacing: .5px; }
 .dish__desc { color: var(--muted); font-size: .9rem; }
 .dish__tag {
   align-self: flex-start; margin-top: .3rem; font-size: .7rem; text-transform: uppercase;
