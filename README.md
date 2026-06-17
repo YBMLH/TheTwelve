@@ -1,20 +1,26 @@
 # The Twelve — Food & Coffee
 
-Site web vitrine pour **The Twelve**, café restaurant événementiel.
+Site vitrine moderne pour **The Twelve**, café · restaurant · événementiel (Algérie).
 
 ## Sections
-- **Accueil** — hero plein écran avec accroche et statistiques
-- **À propos** — présentation du lieu
-- **Menu** — carte interactive filtrable (Cafés & Boissons, Plats & Burgers, Petit-déjeuner, Desserts)
-- **Services** — Traiteur, Réceptions, Anniversaires, Séminaires
+- **Hero** — accroche plein écran, palette espresso & or
+- **Histoire** — présentation du lieu
+- **Menu** — carte complète à onglets (Café, Bar à jus, Burgers, Pizza, Tacos, Plats, Entrées, Pâtes & Salades, Broaster, Crêpes & Gaufres, Desserts, Boissons)
+- **Signatures** — les incontournables
+- **Événementiel** — traiteur, réceptions, anniversaires, séminaires
 - **Galerie** — mosaïque d'ambiance
-- **Contact** — coordonnées + formulaire de demande
+- **Contact** — téléphone, WhatsApp, horaires, carte
 
-## Stack
-HTML / CSS / JavaScript pur (aucune dépendance). Conçu pour GitHub Pages.
+## Design
+Palette espresso + crème + accent or, typographie Fraunces (serif) + Inter,
+marquee animé, animations au défilement. HTML / CSS / JS purs, sans dépendance.
+
+## Mise en ligne (GitHub Pages)
+Le workflow `.github/workflows/pages.yml` publie automatiquement le site à
+chaque push sur `main`. Pour l'activer : **Settings → Pages → Source : GitHub Actions**.
 
 ## Lancer en local
-Ouvrez simplement `index.html` dans un navigateur.
+Ouvrez `index.html` dans un navigateur.
 
 ## Contact
 📞 0561 98 84 34

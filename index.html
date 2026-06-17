@@ -3,271 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Twelve — Food &amp; Coffee | Restaurant &amp; Événementiel</title>
-  <meta name="description" content="The Twelve — Food & Coffee. Restaurant événementiel : traiteur, réceptions, anniversaires et séminaires. Réservez au 0561 98 84 34." />
+  <title>The Twelve — Café · Restaurant · Événementiel</title>
+  <meta name="description" content="The Twelve — Food & Coffee. Café de spécialité, cuisine généreuse et restaurant événementiel en Algérie. Découvrez notre carte." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- ===== Header / Navigation ===== -->
-  <header class="header" id="header">
-    <nav class="nav container">
-      <a href="#accueil" class="brand">
-        <span class="brand__mark">12</span>
-        <span class="brand__text">The Twelve<small>Food &amp; Coffee</small></span>
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#top" class="logo">
+        <span class="logo__mark">12</span>
+        <span class="logo__text">The Twelve<small>Food &amp; Coffee</small></span>
       </a>
-
-      <ul class="nav__menu" id="navMenu">
-        <li><a href="#accueil" class="nav__link">Accueil</a></li>
-        <li><a href="#apropos" class="nav__link">À propos</a></li>
-        <li><a href="#menu" class="nav__link">Menu</a></li>
-        <li><a href="tacos.html" class="nav__link">Tacos</a></li>
-        <li><a href="#services" class="nav__link">Services</a></li>
-        <li><a href="#galerie" class="nav__link">Galerie</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-      </ul>
-
-      <a href="tel:+213561988434" class="nav__cta">Réserver</a>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+      <nav class="nav__links" id="navLinks">
+        <a href="#histoire">Histoire</a>
+        <a href="#menu">Menu</a>
+        <a href="#evenementiel">Événementiel</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav__pill">Nous trouver</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
   </header>
 
   <!-- ===== Hero ===== -->
-  <section class="hero" id="accueil">
-    <div class="hero__overlay"></div>
-    <div class="hero__content container">
-      <p class="hero__eyebrow">Restaurant &amp; Événementiel</p>
-      <h1 class="hero__title">The Twelve</h1>
-      <p class="hero__subtitle">Food &amp; Coffee — Là où chaque saveur raconte une histoire.</p>
-      <div class="hero__actions">
-        <a href="#menu" class="btn btn--primary">Découvrir le menu</a>
-        <a href="#contact" class="btn btn--ghost">Nous contacter</a>
+  <section class="hero" id="top">
+    <div class="hero__glow"></div>
+    <div class="hero__inner container">
+      <span class="hero__eyebrow">Café · Restaurant · Événementiel</span>
+      <h1 class="hero__title">
+        Le goût qui<br><span class="hero__accent">rassemble.</span>
+      </h1>
+      <p class="hero__lead">
+        Chez <strong>The Twelve</strong>, le café de spécialité rencontre une cuisine
+        généreuse. Un lieu pensé pour vos pauses, vos repas et vos plus beaux événements.
+      </p>
+      <div class="hero__cta">
+        <a href="#menu" class="btn btn--solid">Découvrir la carte</a>
+        <a href="#contact" class="btn btn--line">Nous rendre visite</a>
       </div>
-      <ul class="hero__stats">
-        <li><strong>+5</strong><span>Années d'expérience</span></li>
-        <li><strong>+100</strong><span>Plats &amp; boissons</span></li>
-        <li><strong>100%</strong><span>Fait maison</span></li>
-      </ul>
+      <div class="hero__meta">
+        <div><b>08—23h</b><span>7j/7</span></div>
+        <div><b>+100</b><span>références</span></div>
+        <div><b>100%</b><span>fait maison</span></div>
+      </div>
     </div>
-    <a href="#apropos" class="hero__scroll" aria-label="Défiler vers le bas">↓</a>
+    <a href="#histoire" class="hero__scroll" aria-label="Défiler"><span></span></a>
   </section>
 
-  <!-- ===== About ===== -->
-  <section class="about section" id="apropos">
-    <div class="container about__grid">
-      <div class="about__media">
-        <div class="about__img about__img--1"></div>
-        <div class="about__img about__img--2"></div>
-        <div class="about__badge">
-          <strong>12</strong>
-          <span>L'adresse food &amp; coffee</span>
+  <!-- ===== Marquee ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Espresso</span><i>✦</i><span>Burgers</span><i>✦</i><span>Pizza</span><i>✦</i>
+      <span>Crêpes</span><i>✦</i><span>Bar à jus</span><i>✦</i><span>Desserts</span><i>✦</i>
+      <span>Tacos</span><i>✦</i><span>Broaster</span><i>✦</i>
+      <span>Espresso</span><i>✦</i><span>Burgers</span><i>✦</i><span>Pizza</span><i>✦</i>
+      <span>Crêpes</span><i>✦</i><span>Bar à jus</span><i>✦</i><span>Desserts</span><i>✦</i>
+      <span>Tacos</span><i>✦</i><span>Broaster</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ===== Histoire ===== -->
+  <section class="story section" id="histoire">
+    <div class="container story__grid">
+      <div class="story__visual reveal">
+        <div class="story__card story__card--a"><span>☕</span></div>
+        <div class="story__card story__card--b"><span>🍔</span></div>
+        <div class="story__quote">
+          <strong>“</strong>
+          <p>Chaque tasse, chaque assiette : une attention.</p>
         </div>
       </div>
-      <div class="about__text">
-        <p class="section__eyebrow">À propos de nous</p>
-        <h2 class="section__title">Bienvenue chez The Twelve</h2>
+      <div class="story__text reveal">
+        <span class="eyebrow">Notre histoire</span>
+        <h2 class="h2">Bien plus qu'un café.</h2>
         <p>
-          The Twelve est bien plus qu'un café restaurant : c'est un lieu de
-          rencontre, de partage et de gourmandise. Nous mêlons une cuisine
-          généreuse à un café d'exception, dans une ambiance chaleureuse et
-          moderne.
+          The Twelve est né d'une idée simple : réunir, sous un même toit, un vrai
+          café de spécialité et une cuisine qui fait plaisir. Des grains
+          soigneusement sélectionnés aux burgers, pizzas et crêpes préparés
+          minute — tout est pensé pour être savouré.
         </p>
         <p>
-          Que ce soit pour un petit-déjeuner, un déjeuner entre amis ou un grand
-          événement, notre équipe vous accueille avec le sourire et le souci du
-          détail.
+          Et quand vient l'heure de fêter, nous devenons votre restaurant
+          événementiel : un cadre chaleureux et une équipe aux petits soins.
         </p>
-        <ul class="about__list">
-          <li>Produits frais &amp; sélectionnés avec soin</li>
-          <li>Café de spécialité torréfié maison</li>
-          <li>Espace chaleureux pour tous vos moments</li>
+        <ul class="ticks">
+          <li>Café de spécialité torréfié avec soin</li>
+          <li>Produits frais &amp; faits maison</li>
+          <li>Espace convivial, ouvert tous les jours</li>
         </ul>
-        <a href="#services" class="btn btn--primary">Nos services</a>
       </div>
     </div>
   </section>
 
   <!-- ===== Menu ===== -->
-  <section class="menu section section--alt" id="menu">
+  <section class="menu section section--dark" id="menu">
     <div class="container">
-      <div class="section__head">
-        <p class="section__eyebrow">Notre carte</p>
-        <h2 class="section__title">Un menu fait pour vous régaler</h2>
-        <p class="section__lead">Sélectionnez une catégorie pour explorer nos saveurs.</p>
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--light">La carte</span>
+        <h2 class="h2 h2--light">De quoi se régaler, du matin au soir</h2>
       </div>
 
-      <div class="menu__filters" id="menuFilters">
-        <button class="chip is-active" data-filter="all">Tout</button>
-        <button class="chip" data-filter="burgers">Burgers</button>
-        <button class="chip" data-filter="pizza">Pizza</button>
-        <button class="chip" data-filter="tacos">Tacos &amp; Kids</button>
-        <button class="chip" data-filter="plats">Plats</button>
-        <button class="chip" data-filter="entrees">Entrées chaudes</button>
-        <button class="chip" data-filter="pates">Pâtes</button>
-        <button class="chip" data-filter="salades">Salades</button>
-        <button class="chip" data-filter="broaster">Broaster</button>
-      </div>
-
-      <div class="menu__grid" id="menuGrid"><!-- injected by script.js --></div>
-
-      <a href="tacos.html" class="menu__cta">
-        <span>🌯 Composez votre tacos en 5 étapes</span>
-        <strong>Lancer le configurateur →</strong>
-      </a>
+      <div class="tabs" id="tabs"><!-- injected --></div>
+      <div class="menu__list" id="menuList"><!-- injected --></div>
     </div>
   </section>
 
-  <!-- ===== Services / Événementiel ===== -->
-  <section class="services section" id="services">
+  <!-- ===== Signatures ===== -->
+  <section class="signatures section">
     <div class="container">
-      <div class="section__head">
-        <p class="section__eyebrow">Restaurant événementiel</p>
-        <h2 class="section__title">Nous organisons vos moments</h2>
-        <p class="section__lead">Thème et décoration selon votre choix.</p>
+      <div class="section__head reveal">
+        <span class="eyebrow">Les incontournables</span>
+        <h2 class="h2">Nos signatures</h2>
       </div>
-
-      <div class="services__grid">
-        <article class="service">
-          <div class="service__icon">🍽️</div>
-          <h3>Traiteur</h3>
-          <p>Buffets et menus sur mesure, livrés et dressés pour vos invités.</p>
+      <div class="sig__grid">
+        <article class="sig reveal">
+          <div class="sig__emoji">🍕</div>
+          <h3>Pizza Twelve</h3>
+          <p>Base crème fraîche, viande hachée, poulet, merguez &amp; fromage fondu.</p>
+          <span class="sig__price">dès 1 050 DA</span>
         </article>
-        <article class="service">
-          <div class="service__icon">🥂</div>
-          <h3>Réceptions</h3>
-          <p>Un cadre élégant et un service soigné pour vos réceptions privées.</p>
+        <article class="sig reveal">
+          <div class="sig__emoji">🥞</div>
+          <h3>Crêpe Twelve</h3>
+          <p>Notre crêpe signature, croustillante ou moelleuse, ultra gourmande.</p>
+          <span class="sig__price">dès 750 DA</span>
         </article>
-        <article class="service">
-          <div class="service__icon">🎂</div>
-          <h3>Anniversaires</h3>
-          <p>Une fête inoubliable, thème et décoration selon vos envies.</p>
+        <article class="sig reveal">
+          <div class="sig__emoji">🥤</div>
+          <h3>Milk-Shakes</h3>
+          <p>Fraise, banane, Nutella, Oreo, Kinder Bueno — onctueux à souhait.</p>
+          <span class="sig__price">500 DA</span>
         </article>
-        <article class="service">
-          <div class="service__icon">💼</div>
-          <h3>Séminaires</h3>
-          <p>Espace équipé et pauses gourmandes pour vos réunions pro.</p>
+        <article class="sig reveal">
+          <div class="sig__emoji">☕</div>
+          <h3>Café de spécialité</h3>
+          <p>Espresso, cappuccino, capsules premium &amp; Café Richard.</p>
+          <span class="sig__price">dès 150 DA</span>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Gallery ===== -->
-  <section class="gallery section section--alt" id="galerie">
+  <!-- ===== Événementiel ===== -->
+  <section class="events section section--cream" id="evenementiel">
     <div class="container">
-      <div class="section__head">
-        <p class="section__eyebrow">Galerie</p>
-        <h2 class="section__title">L'ambiance The Twelve</h2>
+      <div class="section__head reveal">
+        <span class="eyebrow">Restaurant événementiel</span>
+        <h2 class="h2">On s'occupe de tout</h2>
+        <p class="section__sub">Thème et décoration selon vos envies.</p>
       </div>
-      <div class="gallery__grid">
-        <div class="gallery__item gallery__item--a"></div>
-        <div class="gallery__item gallery__item--b"></div>
-        <div class="gallery__item gallery__item--c"></div>
-        <div class="gallery__item gallery__item--d"></div>
-        <div class="gallery__item gallery__item--e"></div>
+      <div class="events__grid">
+        <article class="event reveal"><span>🍽️</span><h3>Traiteur</h3><p>Buffets &amp; menus sur mesure pour vos invités.</p></article>
+        <article class="event reveal"><span>🥂</span><h3>Réceptions</h3><p>Un cadre élégant et un service soigné.</p></article>
+        <article class="event reveal"><span>🎂</span><h3>Anniversaires</h3><p>Une fête inoubliable, décor sur mesure.</p></article>
+        <article class="event reveal"><span>💼</span><h3>Séminaires</h3><p>Espace équipé &amp; pauses gourmandes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Galerie ===== -->
+  <section class="gallery section" id="galerie">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow">Galerie</span>
+        <h2 class="h2">L'ambiance The Twelve</h2>
+      </div>
+      <div class="gallery__grid reveal">
+        <figure class="g g--1"><figcaption>Espresso bar</figcaption></figure>
+        <figure class="g g--2"><figcaption>Burgers</figcaption></figure>
+        <figure class="g g--3"><figcaption>Pizzas</figcaption></figure>
+        <figure class="g g--4"><figcaption>Crêpes &amp; gaufres</figcaption></figure>
+        <figure class="g g--5"><figcaption>Bar à jus</figcaption></figure>
       </div>
     </div>
   </section>
 
   <!-- ===== Contact ===== -->
-  <section class="contact section" id="contact">
+  <section class="contact section section--dark" id="contact">
     <div class="container contact__grid">
-      <div class="contact__info">
-        <p class="section__eyebrow">Contact</p>
-        <h2 class="section__title">Réservez votre table ou votre événement</h2>
-        <ul class="contact__list">
+      <div class="contact__text reveal">
+        <span class="eyebrow eyebrow--light">Contact</span>
+        <h2 class="h2 h2--light">Passez nous voir</h2>
+        <p class="contact__intro">Une question, une envie, un événement à organiser ? Écrivez-nous, on vous répond vite.</p>
+
+        <ul class="contact__rows">
           <li>
             <span class="contact__ic">📞</span>
-            <div><strong>Téléphone</strong><a href="tel:+213561988434">0561 98 84 34</a></div>
+            <div><b>Téléphone</b><a href="tel:+213561988434">0561 98 84 34</a></div>
+          </li>
+          <li>
+            <span class="contact__ic">💬</span>
+            <div><b>WhatsApp</b><a href="https://wa.me/213561988434" target="_blank" rel="noopener">Discuter avec nous</a></div>
           </li>
           <li>
             <span class="contact__ic">🕒</span>
-            <div><strong>Horaires</strong><span>Tous les jours · 08h00 — 23h00</span></div>
+            <div><b>Horaires</b><span>Tous les jours · 08h00 — 23h00</span></div>
           </li>
           <li>
             <span class="contact__ic">📍</span>
-            <div><strong>Adresse</strong><span>Algérie</span></div>
+            <div><b>Adresse</b><span>Algérie</span></div>
           </li>
         </ul>
-        <ul class="contact__list">
-          <li>
-            <span class="contact__ic">💬</span>
-            <div><strong>WhatsApp</strong><a href="https://wa.me/213561988434" target="_blank" rel="noopener">Discuter sur WhatsApp</a></div>
-          </li>
-        </ul>
+
         <div class="contact__socials">
-          <a href="https://wa.me/213561988434" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
-          <a href="#" aria-label="Facebook">Facebook</a>
-          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="https://wa.me/213561988434" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
         </div>
       </div>
 
-      <form class="contact__form" id="contactForm" novalidate>
-        <div class="field">
-          <label for="name">Nom complet</label>
-          <input type="text" id="name" name="name" placeholder="Votre nom" required />
-        </div>
-        <div class="field">
-          <label for="phone">Téléphone</label>
-          <input type="tel" id="phone" name="phone" placeholder="06 ..." required />
-        </div>
-        <div class="field">
-          <label for="reason">Motif</label>
-          <select id="reason" name="reason">
-            <option>Réservation table</option>
-            <option>Traiteur</option>
-            <option>Réception</option>
-            <option>Anniversaire</option>
-            <option>Séminaire</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Dites-nous en plus..."></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary btn--block">Envoyer via WhatsApp</button>
-        <p class="form__note" id="formNote" hidden>Ouverture de WhatsApp… envoyez le message pour finaliser votre demande. ✅</p>
-      </form>
+      <div class="contact__map reveal">
+        <!-- Remplacez l'adresse dans l'URL par l'emplacement exact du restaurant -->
+        <iframe
+          title="Localisation The Twelve"
+          src="https://www.google.com/maps?q=Alger,Algérie&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
-    <div class="container footer__grid">
-      <div>
-        <a href="#accueil" class="brand brand--light">
-          <span class="brand__mark">12</span>
-          <span class="brand__text">The Twelve<small>Food &amp; Coffee</small></span>
-        </a>
-        <p class="footer__about">Restaurant événementiel — traiteur, réceptions, anniversaires &amp; séminaires.</p>
-      </div>
-      <div>
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+213561988434">0561 98 84 34</a></li>
-          <li>Tous les jours · 08h — 23h</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p>© <span id="year"></span> The Twelve — Food &amp; Coffee. Tous droits réservés.</p>
+    <div class="container footer__inner">
+      <a href="#top" class="logo logo--light">
+        <span class="logo__mark">12</span>
+        <span class="logo__text">The Twelve<small>Food &amp; Coffee</small></span>
+      </a>
+      <nav class="footer__nav">
+        <a href="#histoire">Histoire</a>
+        <a href="#menu">Menu</a>
+        <a href="#evenementiel">Événementiel</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> The Twelve — Food &amp; Coffee</p>
     </div>
   </footer>
 
-  <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="fab" aria-label="Contacter The Twelve sur WhatsApp">💬</a>
+  <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="fab" aria-label="WhatsApp">💬</a>
 
   <script src="script.js"></script>
 </body>
