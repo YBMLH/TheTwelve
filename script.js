@@ -201,5 +201,23 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
+/* ===== Theme toggle ===== */
+const themeToggle = document.getElementById("themeToggle");
+const root = document.documentElement;
+
+function syncThemeIcon() {
+  const isDark = root.getAttribute("data-theme") === "dark";
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
+  themeToggle.setAttribute("aria-label", isDark ? "Passer en thème clair" : "Passer en thème sombre");
+}
+syncThemeIcon();
+
+themeToggle.addEventListener("click", () => {
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("twelve-theme", next);
+  syncThemeIcon();
+});
+
 /* ===== Year ===== */
 document.getElementById("year").textContent = new Date().getFullYear();
