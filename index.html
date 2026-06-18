@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("twelve-theme");
+      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
 </head>
 <body>
   <!-- ===== Nav ===== -->
@@ -25,6 +32,7 @@
         <a href="#galerie">Galerie</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème" title="Changer de thème">🌙</button>
       <a href="#contact" class="nav__pill">Nous trouver</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
