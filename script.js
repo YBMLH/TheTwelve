@@ -126,66 +126,67 @@ const CATEGORIES = [
   { id: "boissons", label: "Boissons" },
 ];
 
-/* ===== Render tabs + list ===== */
+/* ===== Render tabs + list (menu page only) ===== */
 const tabsEl = document.getElementById("tabs");
 const listEl = document.getElementById("menuList");
 
-tabsEl.innerHTML = CATEGORIES.map(
-  (c, i) => `<button class="tab${i === 0 ? " is-active" : ""}" data-cat="${c.id}">${c.label}</button>`
-).join("");
+if (tabsEl && listEl) {
+  tabsEl.innerHTML = CATEGORIES.map(
+    (c, i) => `<button class="tab${i === 0 ? " is-active" : ""}" data-cat="${c.id}">${c.label}</button>`
+  ).join("");
 
-function renderMenu(cat) {
-  const items = MENU.filter((m) => m.cat === cat);
-  listEl.innerHTML = items
-    .map(
-      (m, i) => `
-      <div class="m-item" style="animation-delay:${i * 40}ms">
-        <div class="m-item__head">
-          <span class="m-item__name">${m.name}${m.tag ? `<span class="m-tag">${m.tag}</span>` : ""}</span>
-          <span class="m-item__dots"></span>
-          <span class="m-item__price">${m.price} DA${m.note ? `<small>${m.note}</small>` : ""}</span>
-        </div>
-        <p class="m-item__desc">${m.desc}</p>
-      </div>`
-    )
-    .join("");
+  const renderMenu = (cat) => {
+    const items = MENU.filter((m) => m.cat === cat);
+    listEl.innerHTML = items
+      .map(
+        (m, i) => `
+        <div class="m-item" style="animation-delay:${i * 40}ms">
+          <div class="m-item__head">
+            <span class="m-item__name">${m.name}${m.tag ? `<span class="m-tag">${m.tag}</span>` : ""}</span>
+            <span class="m-item__dots"></span>
+            <span class="m-item__price">${m.price} DA${m.note ? `<small>${m.note}</small>` : ""}</span>
+          </div>
+          <p class="m-item__desc">${m.desc}</p>
+        </div>`
+      )
+      .join("");
+  };
+  renderMenu(CATEGORIES[0].id);
+
+  tabsEl.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tab");
+    if (!btn) return;
+    tabsEl.querySelectorAll(".tab").forEach((t) => t.classList.remove("is-active"));
+    btn.classList.add("is-active");
+    renderMenu(btn.dataset.cat);
+  });
 }
-renderMenu(CATEGORIES[0].id);
 
-tabsEl.addEventListener("click", (e) => {
-  const btn = e.target.closest(".tab");
-  if (!btn) return;
-  tabsEl.querySelectorAll(".tab").forEach((t) => t.classList.remove("is-active"));
-  btn.classList.add("is-active");
-  renderMenu(btn.dataset.cat);
-});
-
-/* ===== Nav: sticky + mobile + active link ===== */
+/* ===== Nav: sticky + mobile ===== */
 const nav = document.getElementById("nav");
 const burger = document.getElementById("burger");
 const navLinks = document.getElementById("navLinks");
 
-burger.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  burger.classList.toggle("open");
-});
-navLinks.querySelectorAll("a").forEach((a) =>
-  a.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    burger.classList.remove("open");
-  })
-);
+if (burger && navLinks) {
+  burger.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    burger.classList.toggle("open");
+  });
+  navLinks.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      burger.classList.remove("open");
+    })
+  );
+}
 
-const sections = [...document.querySelectorAll("section[id]")];
-const linkEls = [...navLinks.querySelectorAll("a")];
-
+/* ===== Back to top + sticky nav on scroll ===== */
+const toTop = document.getElementById("toTop");
 window.addEventListener("scroll", () => {
-  nav.classList.toggle("is-stuck", window.scrollY > 30);
-  const pos = window.scrollY + 130;
-  let current = "";
-  for (const s of sections) if (pos >= s.offsetTop) current = s.id;
-  linkEls.forEach((l) => l.classList.toggle("is-active", l.getAttribute("href") === `#${current}`));
+  if (nav) nav.classList.toggle("is-stuck", window.scrollY > 30);
+  if (toTop) toTop.classList.toggle("show", window.scrollY > 600);
 });
+if (toTop) toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
 /* ===== Reveal on scroll ===== */
 const io = new IntersectionObserver(
