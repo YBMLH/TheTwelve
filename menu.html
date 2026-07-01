@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu — The Twelve</title>
+  <meta name="description" content="La carte complète de The Twelve : café, bar à jus, burgers, pizza, tacos, plats, crêpes & gaufres, desserts et boissons. Prix en DA." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23c79a4b'/%3E%3Ctext x='50' y='70' font-size='54' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%231a1310'%3E12%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("twelve-theme");
+      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">12</span>
+        <span class="logo__text">The Twelve<small>Food &amp; Coffee</small></span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="menu.html" class="is-active">Menu</a>
+        <a href="index.html#galerie">Galerie</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème" title="Changer de thème">🌙</button>
+      <a href="index.html#contact" class="nav__pill">Nous trouver</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ===== Page hero ===== -->
+  <section class="page-hero">
+    <div class="page-hero__glow"></div>
+    <div class="container">
+      <span class="eyebrow">La carte</span>
+      <h1>Notre menu</h1>
+      <p>Du café de spécialité aux burgers, pizzas, crêpes et desserts — plus de 100 références. Prix en DA.</p>
+    </div>
+  </section>
+
+  <!-- ===== Menu ===== -->
+  <section class="menu section section--dark">
+    <div class="container">
+      <div class="tabs" id="tabs"><!-- injected --></div>
+      <div class="menu__list" id="menuList"><!-- injected --></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta section">
+    <div class="container">
+      <div class="cta__box reveal">
+        <h2 class="h2">Une envie, un événement ?</h2>
+        <p>Appelez-nous ou écrivez-nous sur WhatsApp, on vous répond vite.</p>
+        <div class="cta__actions">
+          <a href="tel:+213561988434" class="btn btn--solid">0561 98 84 34</a>
+          <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="btn btn--line">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="index.html" class="logo logo--light">
+        <span class="logo__mark">12</span>
+        <span class="logo__text">The Twelve<small>Food &amp; Coffee</small></span>
+      </a>
+      <nav class="footer__nav">
+        <a href="about.html">À propos</a>
+        <a href="menu.html">Menu</a>
+        <a href="index.html#galerie">Galerie</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> The Twelve — Food &amp; Coffee</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="fab" aria-label="WhatsApp">💬</a>
+  <button class="to-top" id="toTop" aria-label="Haut de page">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
