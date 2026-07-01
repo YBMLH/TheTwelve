@@ -95,9 +95,17 @@ img, iframe { display: block; max-width: 100%; }
 .logo--light .logo__text { color: var(--cream); }
 
 /* ===== Nav ===== */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: .35s var(--ease); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: box-shadow .35s var(--ease); }
+/* Glass bar as a pseudo-element so .nav never creates a containing block
+   that would trap the fixed mobile drawer. */
+.nav::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0;
+  background: var(--nav-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  transition: opacity .35s var(--ease);
+}
 .nav__inner { display: flex; align-items: center; gap: 1.5rem; justify-content: space-between; padding: 1.3rem 0; transition: padding .35s var(--ease); }
-.nav.is-stuck { background: var(--nav-bg); backdrop-filter: blur(14px); box-shadow: 0 8px 30px -22px rgba(0,0,0,.6); }
+.nav.is-stuck::before { opacity: 1; }
+.nav.is-stuck { box-shadow: 0 8px 30px -22px rgba(0,0,0,.6); }
 .nav.is-stuck .nav__inner { padding: .7rem 0; }
 .nav__links { display: flex; gap: 2.2rem; margin-left: auto; }
 .nav__links a { font-size: .94rem; font-weight: 500; color: var(--cream); position: relative; opacity: .9; transition: color .35s var(--ease), opacity .2s; }
