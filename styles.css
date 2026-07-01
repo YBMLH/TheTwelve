@@ -336,15 +336,19 @@ img, iframe { display: block; max-width: 100%; }
 }
 @media (max-width: 720px) {
   .section { padding: 4.5rem 0; }
+  /* Keep the mobile bar solid — no backdrop-filter compositing under the drawer. */
+  .nav::before { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  /* Full-screen opaque overlay: bulletproof on iOS Safari regardless of scroll. */
   .nav__links {
-    position: fixed; inset: 0 0 0 auto; width: min(80%, 320px); background: var(--espresso); color: var(--cream);
-    flex-direction: column; justify-content: center; gap: 2rem; padding: 2rem; transform: translateX(100%);
-    transition: transform .4s var(--ease); margin-left: 0;
+    position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; z-index: 200;
+    background: var(--espresso); color: var(--cream); margin-left: 0;
+    flex-direction: column; align-items: center; justify-content: center; gap: 2rem; padding: 2rem;
+    transform: translateX(100%); transition: transform .4s var(--ease);
   }
   .nav__links.open { transform: none; }
-  .nav__links a, .nav.is-stuck .nav__links a { color: var(--cream); font-size: 1.2rem; }
+  .nav__links a, .nav.is-stuck .nav__links a { color: var(--cream); font-size: 1.4rem; }
   .nav__pill { display: none; }
-  .burger { display: flex; z-index: 101; }
+  .burger { display: flex; z-index: 210; }
   .burger.open span { background: var(--cream); }
   .burger.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
   .burger.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
