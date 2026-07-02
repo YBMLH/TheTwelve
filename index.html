@@ -3,201 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Twelve — Café · Restaurant · Événementiel</title>
-  <meta name="description" content="The Twelve — Food & Coffee. Café de spécialité, cuisine généreuse et restaurant événementiel en Algérie. Découvrez notre carte et passez nous voir." />
+  <title>The Twelve — Café · Restaurant</title>
+  <meta name="description" content="The Twelve — Food & Coffee. Café de spécialité, burgers, pizza, crêpes et desserts en Algérie. Découvrez la carte, laissez votre avis et venez nous voir." />
   <meta property="og:title" content="The Twelve — Food & Coffee" />
-  <meta property="og:description" content="Café de spécialité, cuisine généreuse et restaurant événementiel en Algérie." />
+  <meta property="og:description" content="Café de spécialité, cuisine généreuse et moments à partager. Ouvert 7j/7, 08h—23h." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23c79a4b'/%3E%3Ctext x='50' y='70' font-size='54' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%231a1310'%3E12%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230f0b08'/%3E%3Ccircle cx='50' cy='50' r='44' fill='none' stroke='%23d9a75a' stroke-width='3'/%3E%3Ctext x='50' y='66' font-size='44' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23d9a75a'%3E12%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
-  <script>
-    (function () {
-      var saved = localStorage.getItem("twelve-theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.setAttribute("data-theme", theme);
-    })();
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=1" />
 </head>
 <body>
+
+  <!-- ===== SVG defs : logo ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f2cd8a"/>
+        <stop offset=".5" stop-color="#d9a75a"/>
+        <stop offset="1" stop-color="#b07f35"/>
+      </linearGradient>
+
+      <!-- Badge complet (héro / footer) -->
+      <symbol id="logo-badge" viewBox="0 0 160 160">
+        <circle cx="80" cy="80" r="76" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+        <circle cx="80" cy="80" r="69" fill="none" stroke="url(#goldGrad)" stroke-width=".8" opacity=".55"/>
+        <path id="arc-top" d="M 24 80 A 56 56 0 0 1 136 80" fill="none"/>
+        <path id="arc-bottom" d="M 22 80 A 58 58 0 0 0 138 80" fill="none"/>
+        <text font-family="Inter, sans-serif" font-size="10.5" font-weight="600" letter-spacing="4.5" fill="url(#goldGrad)">
+          <textPath href="#arc-top" startOffset="50%" text-anchor="middle">THE TWELVE</textPath>
+        </text>
+        <text font-family="Inter, sans-serif" font-size="8.5" font-weight="500" letter-spacing="3.5" fill="url(#goldGrad)" opacity=".85">
+          <textPath href="#arc-bottom" startOffset="50%" text-anchor="middle">FOOD &#183; COFFEE</textPath>
+        </text>
+        <!-- vapeur -->
+        <path d="M 72 46 q -4 -6 0 -11 q 4 -5 0 -10" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+        <path d="M 88 46 q 4 -6 0 -11 q -4 -5 0 -10" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+        <!-- numéral -->
+        <text x="80" y="103" font-family="Fraunces, Georgia, serif" font-size="52" font-weight="600" text-anchor="middle" fill="url(#goldGrad)">12</text>
+        <!-- étoiles latérales -->
+        <text x="34" y="86" font-size="10" text-anchor="middle" fill="url(#goldGrad)">&#10022;</text>
+        <text x="126" y="86" font-size="10" text-anchor="middle" fill="url(#goldGrad)">&#10022;</text>
+        <path d="M 62 118 h 36" stroke="url(#goldGrad)" stroke-width="1" opacity=".7"/>
+      </symbol>
+
+      <!-- Monogramme compact (nav) -->
+      <symbol id="logo-mark" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="url(#goldGrad)" stroke-width="2.4"/>
+        <path d="M 27 18 q -2.6 -3.6 0 -6.5" fill="none" stroke="url(#goldGrad)" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M 37 18 q 2.6 -3.6 0 -6.5" fill="none" stroke="url(#goldGrad)" stroke-width="1.7" stroke-linecap="round"/>
+        <text x="32" y="45" font-family="Fraunces, Georgia, serif" font-size="28" font-weight="600" text-anchor="middle" fill="url(#goldGrad)">12</text>
+      </symbol>
+    </defs>
+  </svg>
+
   <!-- ===== Nav ===== -->
   <header class="nav" id="nav">
-    <div class="nav__inner container">
-      <a href="index.html" class="logo">
-        <span class="logo__mark">12</span>
-        <span class="logo__text">The Twelve<small>Food &amp; Coffee</small></span>
+    <div class="container nav__inner">
+      <a href="#top" class="brand">
+        <svg class="brand__mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand__name">The Twelve<small>Food &amp; Coffee</small></span>
       </a>
       <nav class="nav__links" id="navLinks">
-        <a href="index.html" class="is-active">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="menu.html">Menu</a>
-        <a href="#galerie">Galerie</a>
+        <a href="#menu">Menu</a>
+        <a href="#avis">Votre avis</a>
         <a href="#contact">Contact</a>
+        <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="nav__cta">WhatsApp</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème" title="Changer de thème">🌙</button>
-      <a href="#contact" class="nav__pill">Nous trouver</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <!-- ===== Hero ===== -->
   <section class="hero" id="top">
-    <div class="hero__glow"></div>
-    <div class="hero__inner container">
-      <span class="hero__eyebrow">Café · Restaurant · Événementiel</span>
-      <h1 class="hero__title">Le goût qui<br><span class="hero__accent">rassemble.</span></h1>
-      <p class="hero__lead">
-        Chez <strong>The Twelve</strong>, le café de spécialité rencontre une cuisine
-        généreuse. Un lieu pensé pour vos pauses, vos repas et vos plus beaux événements.
-      </p>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <svg class="hero__badge" aria-hidden="true"><use href="#logo-badge"/></svg>
+      <p class="hero__eyebrow">Café &#183; Restaurant &#183; Alg&eacute;rie</p>
+      <h1 class="hero__title">Le goût qui <em>rassemble</em>.</h1>
+      <p class="hero__lead">Café de spécialité, burgers généreux, pizzas au feu doux, crêpes signature — tout est préparé minute, avec plus de 100 références à la carte.</p>
       <div class="hero__cta">
-        <a href="menu.html" class="btn btn--solid">Découvrir la carte</a>
-        <a href="#contact" class="btn btn--line">Nous rendre visite</a>
+        <a href="#menu" class="btn btn--gold">Découvrir la carte</a>
+        <a href="#contact" class="btn btn--ghost">Nous trouver</a>
       </div>
-      <div class="hero__meta">
-        <div><b>08—23h</b><span>7j/7</span></div>
-        <div><b>+100</b><span>références</span></div>
-        <div><b>100%</b><span>fait maison</span></div>
-      </div>
+      <ul class="hero__meta">
+        <li><b>08h — 23h</b><span>ouvert 7j/7</span></li>
+        <li><b>+100</b><span>références</span></li>
+        <li><b>100%</b><span>fait maison</span></li>
+      </ul>
     </div>
-    <a href="#histoire" class="hero__scroll" aria-label="Défiler"><span></span></a>
+    <a class="hero__scroll" href="#menu" aria-label="Défiler vers le menu"><span></span></a>
   </section>
 
   <!-- ===== Marquee ===== -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <span>Espresso</span><i>✦</i><span>Burgers</span><i>✦</i><span>Pizza</span><i>✦</i>
-      <span>Crêpes</span><i>✦</i><span>Bar à jus</span><i>✦</i><span>Desserts</span><i>✦</i>
-      <span>Tacos</span><i>✦</i><span>Broaster</span><i>✦</i>
-      <span>Espresso</span><i>✦</i><span>Burgers</span><i>✦</i><span>Pizza</span><i>✦</i>
-      <span>Crêpes</span><i>✦</i><span>Bar à jus</span><i>✦</i><span>Desserts</span><i>✦</i>
-      <span>Tacos</span><i>✦</i><span>Broaster</span><i>✦</i>
+      <span>Espresso</span><i>&#10022;</i><span>Burgers</span><i>&#10022;</i><span>Pizza</span><i>&#10022;</i><span>Tacos</span><i>&#10022;</i><span>Crêpes</span><i>&#10022;</i><span>Bar à jus</span><i>&#10022;</i><span>Broaster</span><i>&#10022;</i><span>Desserts</span><i>&#10022;</i>
+      <span>Espresso</span><i>&#10022;</i><span>Burgers</span><i>&#10022;</i><span>Pizza</span><i>&#10022;</i><span>Tacos</span><i>&#10022;</i><span>Crêpes</span><i>&#10022;</i><span>Bar à jus</span><i>&#10022;</i><span>Broaster</span><i>&#10022;</i><span>Desserts</span><i>&#10022;</i>
     </div>
   </div>
 
-  <!-- ===== Histoire (teaser) ===== -->
-  <section class="story section" id="histoire">
-    <div class="container story__grid">
-      <div class="story__visual reveal">
-        <div class="story__card story__card--a"><span>☕</span></div>
-        <div class="story__card story__card--b"><span>🍔</span></div>
-        <div class="story__quote"><strong>“</strong><p>Chaque tasse, chaque assiette : une attention.</p></div>
-      </div>
-      <div class="story__text reveal">
-        <span class="eyebrow">Notre histoire</span>
-        <h2 class="h2">Bien plus qu'un café.</h2>
-        <p>
-          The Twelve réunit, sous un même toit, un vrai café de spécialité et une
-          cuisine qui fait plaisir. Des grains soigneusement sélectionnés aux
-          burgers, pizzas et crêpes préparés minute — tout est pensé pour être savouré.
-        </p>
-        <ul class="ticks">
-          <li>Café de spécialité torréfié avec soin</li>
-          <li>Produits frais &amp; faits maison</li>
-          <li>Restaurant événementiel sur mesure</li>
-        </ul>
-        <a href="about.html" class="btn btn--solid" style="margin-top:1.6rem">En savoir plus</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Signatures ===== -->
-  <section class="signatures section section--cream">
+  <!-- ===== Menu ===== -->
+  <section class="menu section" id="menu">
     <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow">Les incontournables</span>
-        <h2 class="h2">Nos signatures</h2>
-      </div>
-      <div class="sig__grid">
-        <article class="sig reveal"><div class="sig__emoji">🍕</div><h3>Pizza Twelve</h3><p>Base crème fraîche, viande hachée, poulet, merguez &amp; fromage fondu.</p><span class="sig__price">dès 1 050 DA</span></article>
-        <article class="sig reveal"><div class="sig__emoji">🥞</div><h3>Crêpe Twelve</h3><p>Notre crêpe signature, croustillante ou moelleuse, ultra gourmande.</p><span class="sig__price">dès 750 DA</span></article>
-        <article class="sig reveal"><div class="sig__emoji">🥤</div><h3>Milk-Shakes</h3><p>Fraise, banane, Nutella, Oreo, Kinder Bueno — onctueux à souhait.</p><span class="sig__price">500 DA</span></article>
-        <article class="sig reveal"><div class="sig__emoji">☕</div><h3>Café de spécialité</h3><p>Espresso, cappuccino, capsules premium &amp; Café Richard.</p><span class="sig__price">dès 150 DA</span></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Menu teaser ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="teaser__band reveal">
-        <div>
-          <h3>Envie de tout voir ?</h3>
-          <p>Plus de 100 références : café, burgers, pizza, tacos, crêpes, desserts…</p>
-        </div>
-        <a href="menu.html" class="btn btn--solid">Voir toute la carte →</a>
-      </div>
+      <header class="section__head reveal">
+        <span class="eyebrow">La carte</span>
+        <h2>Notre menu</h2>
+        <p>Du café de spécialité aux desserts maison — prix en dinars algériens.</p>
+      </header>
+      <div class="tabs reveal" id="tabs" role="tablist" aria-label="Catégories du menu"></div>
+      <div class="menu__list" id="menuList"></div>
     </div>
   </section>
 
   <!-- ===== Avis ===== -->
-  <section class="reviews section section--cream">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow">Ils nous aiment</span>
-        <h2 class="h2">Ce qu'on dit de nous</h2>
+  <section class="reviews section section--tinted" id="avis">
+    <div class="container reviews__grid">
+      <div class="reviews__text reveal">
+        <span class="eyebrow">Votre avis compte</span>
+        <h2>Dites-nous tout.</h2>
+        <p>Un plat qui vous a marqué&nbsp;? Un détail à améliorer&nbsp;? Notez votre expérience et laissez-nous un mot.</p>
+        <p class="reviews__privacy"><span aria-hidden="true">&#128274;</span> Votre avis est envoyé <b>directement et uniquement au propriétaire</b>. Il n'est jamais publié sur le site.</p>
       </div>
-      <div class="reviews__grid">
-        <article class="review reveal">
-          <div class="review__stars">★★★★★</div>
-          <p>“Le meilleur cappuccino de la ville, et les burgers sont énormes. Ambiance top !”</p>
-          <div class="review__who"><span class="review__av">A</span><div><b>Amine B.</b><span>Client régulier</span></div></div>
-        </article>
-        <article class="review reveal">
-          <div class="review__stars">★★★★★</div>
-          <p>“On a organisé l'anniversaire de ma fille ici. Déco sur mesure, service parfait.”</p>
-          <div class="review__who"><span class="review__av">L</span><div><b>Lina K.</b><span>Événement privé</span></div></div>
-        </article>
-        <article class="review reveal">
-          <div class="review__stars">★★★★★</div>
-          <p>“La crêpe Twelve est une tuerie. Endroit parfait pour bosser ou se poser entre amis.”</p>
-          <div class="review__who"><span class="review__av">Y</span><div><b>Yacine M.</b><span>Étudiant</span></div></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Galerie ===== -->
-  <section class="gallery section" id="galerie">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow">Galerie</span>
-        <h2 class="h2">L'ambiance The Twelve</h2>
-      </div>
-      <div class="gallery__grid reveal">
-        <figure class="g g--1"><figcaption>Espresso bar</figcaption></figure>
-        <figure class="g g--2"><figcaption>Burgers</figcaption></figure>
-        <figure class="g g--3"><figcaption>Pizzas</figcaption></figure>
-        <figure class="g g--4"><figcaption>Crêpes &amp; gaufres</figcaption></figure>
-        <figure class="g g--5"><figcaption>Bar à jus</figcaption></figure>
-      </div>
+      <form class="review-card reveal" id="reviewForm" novalidate>
+        <p class="review-card__label">Votre note</p>
+        <div class="stars" id="stars" role="radiogroup" aria-label="Note sur 5 étoiles">
+          <button type="button" class="star" data-value="1" aria-label="1 étoile">&#9733;</button>
+          <button type="button" class="star" data-value="2" aria-label="2 étoiles">&#9733;</button>
+          <button type="button" class="star" data-value="3" aria-label="3 étoiles">&#9733;</button>
+          <button type="button" class="star" data-value="4" aria-label="4 étoiles">&#9733;</button>
+          <button type="button" class="star" data-value="5" aria-label="5 étoiles">&#9733;</button>
+        </div>
+        <p class="stars__hint" id="starsHint">Touchez une étoile</p>
+        <label class="field">
+          <span>Votre nom</span>
+          <input type="text" name="nom" id="revName" placeholder="Ex. Amine B." required autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Votre message <small>(optionnel)</small></span>
+          <textarea name="message" id="revMessage" rows="4" placeholder="Racontez-nous votre expérience…"></textarea>
+        </label>
+        <button type="submit" class="btn btn--gold review-card__submit" id="revSubmit">Envoyer mon avis</button>
+        <p class="review-card__status" id="revStatus" role="status"></p>
+      </form>
     </div>
   </section>
 
   <!-- ===== Contact ===== -->
-  <section class="contact section section--dark" id="contact">
-    <div class="container contact__grid">
-      <div class="contact__text reveal">
-        <span class="eyebrow eyebrow--light">Contact</span>
-        <h2 class="h2 h2--light">Passez nous voir</h2>
-        <p class="contact__intro">Une question, une envie, un événement à organiser ? Écrivez-nous, on vous répond vite.</p>
-        <ul class="contact__rows">
-          <li><span class="contact__ic">📞</span><div><b>Téléphone</b><a href="tel:+213561988434">0561 98 84 34</a></div></li>
-          <li><span class="contact__ic">💬</span><div><b>WhatsApp</b><a href="https://wa.me/213561988434" target="_blank" rel="noopener">Discuter avec nous</a></div></li>
-          <li><span class="contact__ic">🕒</span><div><b>Horaires</b><span>Tous les jours · 08h00 — 23h00</span></div></li>
-          <li><span class="contact__ic">📍</span><div><b>Adresse</b><span>Algérie</span></div></li>
-        </ul>
-        <div class="contact__socials">
-          <a href="https://wa.me/213561988434" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
+  <section class="contact section" id="contact">
+    <div class="container">
+      <header class="section__head reveal">
+        <span class="eyebrow">Contact</span>
+        <h2>Passez nous voir</h2>
+        <p>Une question, une envie, un événement à organiser&nbsp;? On vous répond vite.</p>
+      </header>
+      <div class="contact__grid">
+        <div class="contact__cards reveal">
+          <a class="c-card" href="tel:+213561988434">
+            <span class="c-card__ic" aria-hidden="true">&#128222;</span>
+            <b>Téléphone</b>
+            <span>0561 98 84 34</span>
+          </a>
+          <a class="c-card" href="https://wa.me/213561988434" target="_blank" rel="noopener">
+            <span class="c-card__ic" aria-hidden="true">&#128172;</span>
+            <b>WhatsApp</b>
+            <span>Discuter avec nous</span>
+          </a>
+          <div class="c-card">
+            <span class="c-card__ic" aria-hidden="true">&#128337;</span>
+            <b>Horaires</b>
+            <span>7j/7 &#183; 08h00 — 23h00</span>
+          </div>
+          <div class="c-card">
+            <span class="c-card__ic" aria-hidden="true">&#128205;</span>
+            <b>Adresse</b>
+            <span>Algérie</span>
+          </div>
         </div>
-      </div>
-      <div class="contact__map reveal">
-        <!-- Remplacez l'adresse par l'emplacement exact du restaurant -->
-        <iframe title="Localisation The Twelve" src="https://www.google.com/maps?q=Alger,Algérie&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="contact__map reveal">
+          <iframe title="Localisation The Twelve" src="https://www.google.com/maps?q=Alger,Alg%C3%A9rie&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -205,23 +192,19 @@
   <!-- ===== Footer ===== -->
   <footer class="footer">
     <div class="container footer__inner">
-      <a href="index.html" class="logo logo--light">
-        <span class="logo__mark">12</span>
-        <span class="logo__text">The Twelve<small>Food &amp; Coffee</small></span>
-      </a>
+      <svg class="footer__badge" aria-hidden="true"><use href="#logo-badge"/></svg>
       <nav class="footer__nav">
-        <a href="about.html">À propos</a>
-        <a href="menu.html">Menu</a>
-        <a href="#galerie">Galerie</a>
+        <a href="#menu">Menu</a>
+        <a href="#avis">Votre avis</a>
         <a href="#contact">Contact</a>
       </nav>
       <p class="footer__copy">© <span id="year"></span> The Twelve — Food &amp; Coffee</p>
     </div>
   </footer>
 
-  <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="fab" aria-label="WhatsApp">💬</a>
-  <button class="to-top" id="toTop" aria-label="Haut de page">↑</button>
+  <a href="https://wa.me/213561988434" target="_blank" rel="noopener" class="fab" aria-label="WhatsApp">&#128172;</a>
+  <button class="to-top" id="toTop" aria-label="Retour en haut">&#8593;</button>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=1"></script>
 </body>
 </html>

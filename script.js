@@ -1,3 +1,7 @@
+/* ============================================================
+   The Twelve — Food & Coffee
+   ============================================================ */
+
 /* ===== Menu data (prix en DA) ===== */
 const MENU = [
   /* Café */
@@ -126,13 +130,13 @@ const CATEGORIES = [
   { id: "boissons", label: "Boissons" },
 ];
 
-/* ===== Render tabs + list (menu page only) ===== */
+/* ===== Menu : onglets + liste ===== */
 const tabsEl = document.getElementById("tabs");
 const listEl = document.getElementById("menuList");
 
 if (tabsEl && listEl) {
   tabsEl.innerHTML = CATEGORIES.map(
-    (c, i) => `<button class="tab${i === 0 ? " is-active" : ""}" data-cat="${c.id}">${c.label}</button>`
+    (c, i) => `<button class="tab${i === 0 ? " is-active" : ""}" role="tab" data-cat="${c.id}">${c.label}</button>`
   ).join("");
 
   const renderMenu = (cat) => {
@@ -162,25 +166,109 @@ if (tabsEl && listEl) {
   });
 }
 
-/* ===== Nav: sticky + mobile ===== */
+/* ===== Avis : étoiles + envoi privé au propriétaire =====
+   Les avis sont transmis par e-mail via FormSubmit — ils ne sont
+   jamais stockés ni affichés sur le site. Seul le propriétaire
+   les reçoit, dans sa boîte mail. */
+const OWNER_INBOX = "https://formsubmit.co/ajax/yasserbmlh24@gmail.com";
+const RATING_LABELS = { 1: "Décevant", 2: "Bof", 3: "Correct", 4: "Très bien", 5: "Excellent !" };
+
+const reviewForm = document.getElementById("reviewForm");
+
+if (reviewForm) {
+  const starsEl = document.getElementById("stars");
+  const stars = [...starsEl.querySelectorAll(".star")];
+  const hint = document.getElementById("starsHint");
+  const status = document.getElementById("revStatus");
+  const submitBtn = document.getElementById("revSubmit");
+  let rating = 0;
+
+  const paint = (n) => stars.forEach((s) => s.classList.toggle("is-lit", +s.dataset.value <= n));
+
+  stars.forEach((s) => {
+    s.addEventListener("mouseenter", () => paint(+s.dataset.value));
+    s.addEventListener("click", () => {
+      rating = +s.dataset.value;
+      paint(rating);
+      hint.textContent = `${rating}/5 — ${RATING_LABELS[rating]}`;
+      hint.classList.add("is-set");
+    });
+  });
+  starsEl.addEventListener("mouseleave", () => paint(rating));
+
+  reviewForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("revName").value.trim();
+    const message = document.getElementById("revMessage").value.trim();
+
+    if (!rating) {
+      status.textContent = "Choisissez d'abord une note en étoiles.";
+      status.className = "review-card__status err";
+      return;
+    }
+    if (!name) {
+      status.textContent = "Dites-nous votre nom 🙂";
+      status.className = "review-card__status err";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Envoi en cours…";
+    status.textContent = "";
+    status.className = "review-card__status";
+
+    try {
+      const res = await fetch(OWNER_INBOX, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `⭐ Nouvel avis The Twelve — ${rating}/5 de ${name}`,
+          _template: "table",
+          Note: `${"★".repeat(rating)}${"☆".repeat(5 - rating)} (${rating}/5)`,
+          Nom: name,
+          Message: message || "(aucun message)",
+        }),
+      });
+      if (!res.ok) throw new Error("send-failed");
+
+      reviewForm.classList.add("review-card--sent");
+      reviewForm.innerHTML = `
+        <span class="sent-ic">🙏</span>
+        <h3>Merci ${name} !</h3>
+        <p>Votre avis ${"★".repeat(rating)} a bien été transmis au propriétaire.<br/>Il est confidentiel et ne sera pas publié.</p>`;
+    } catch {
+      // Repli : envoi de l'avis via WhatsApp si l'e-mail échoue
+      const txt = encodeURIComponent(`Avis The Twelve — ${rating}/5 ★\nNom : ${name}\n${message}`);
+      status.innerHTML = `Oups, l'envoi a échoué. <a href="https://wa.me/213561988434?text=${txt}" target="_blank" rel="noopener" style="color:var(--gold-hi);text-decoration:underline">Envoyer via WhatsApp</a> ?`;
+      status.className = "review-card__status err";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Réessayer";
+    }
+  });
+}
+
+/* ===== Nav : sticky + menu mobile ===== */
 const nav = document.getElementById("nav");
 const burger = document.getElementById("burger");
 const navLinks = document.getElementById("navLinks");
 
 if (burger && navLinks) {
+  const closeMenu = () => {
+    navLinks.classList.remove("open");
+    burger.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("menu-open");
+  };
   burger.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-    burger.classList.toggle("open");
+    const open = navLinks.classList.toggle("open");
+    burger.classList.toggle("open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("menu-open", open);
   });
-  navLinks.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      burger.classList.remove("open");
-    })
-  );
+  navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
 }
 
-/* ===== Back to top + sticky nav on scroll ===== */
+/* ===== Scroll : nav collée + retour en haut ===== */
 const toTop = document.getElementById("toTop");
 window.addEventListener("scroll", () => {
   if (nav) nav.classList.toggle("is-stuck", window.scrollY > 30);
@@ -188,7 +276,7 @@ window.addEventListener("scroll", () => {
 });
 if (toTop) toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
-/* ===== Reveal on scroll ===== */
+/* ===== Apparition au défilement ===== */
 const io = new IntersectionObserver(
   (entries) => {
     entries.forEach((en) => {
@@ -202,23 +290,5 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-/* ===== Theme toggle ===== */
-const themeToggle = document.getElementById("themeToggle");
-const root = document.documentElement;
-
-function syncThemeIcon() {
-  const isDark = root.getAttribute("data-theme") === "dark";
-  themeToggle.textContent = isDark ? "☀️" : "🌙";
-  themeToggle.setAttribute("aria-label", isDark ? "Passer en thème clair" : "Passer en thème sombre");
-}
-syncThemeIcon();
-
-themeToggle.addEventListener("click", () => {
-  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-  root.setAttribute("data-theme", next);
-  localStorage.setItem("twelve-theme", next);
-  syncThemeIcon();
-});
-
-/* ===== Year ===== */
+/* ===== Année ===== */
 document.getElementById("year").textContent = new Date().getFullYear();
